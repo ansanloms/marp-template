@@ -1,0 +1,145 @@
+skinparam preserveAspectRatio xMidYMid meet
+skinparam handwritten true
+
+skinparam BackgroundColor transparent
+
+skinparam Padding 8
+skinparam ParticipantPadding 12
+skinparam BoxPadding 8
+
+skinparam DefaultFontName "Zen Kurenaido"
+skinparam DefaultFontSize 18
+skinparam DefaultFontStyle bold
+skinparam DefaultFontColor #eceff4
+
+skinparam ArrowColor #d8dee9
+
+skinparam ActivityBackgroundColor #434c5e
+skinparam ActivityDiamondBackgroundColor #434c5e
+skinparam ActorBackgroundColor #434c5e
+skinparam AgentBackgroundColor #434c5e
+skinparam ArchimateBackgroundColor #434c5e
+skinparam ArtifactBackgroundColor #434c5e
+skinparam BiddableBackgroundColor #434c5e
+skinparam BoundaryBackgroundColor #434c5e
+skinparam CardBackgroundColor #434c5e
+skinparam ClassBackgroundColor #434c5e
+skinparam ClassHeaderBackgroundColor #434c5e
+skinparam CloudBackgroundColor #434c5e
+skinparam CollectionsBackgroundColor #434c5e
+skinparam ComponentBackgroundColor #434c5e
+skinparam ControlBackgroundColor #434c5e
+skinparam DatabaseBackgroundColor #434c5e
+skinparam DesignedBackgroundColor #434c5e
+skinparam DomainBackgroundColor #434c5e
+skinparam EntityBackgroundColor #434c5e
+skinparam EnumBackgroundColor #434c5e
+skinparam FileBackgroundColor #434c5e
+skinparam FolderBackgroundColor #434c5e
+skinparam FrameBackgroundColor #434c5e
+skinparam HexagonBackgroundColor #434c5e
+skinparam IconPackageBackgroundColor #434c5e
+skinparam IconPrivateBackgroundColor #434c5e
+skinparam IconProtectedBackgroundColor #434c5e
+skinparam IconPublicBackgroundColor #434c5e
+skinparam InterfaceBackgroundColor #434c5e
+skinparam LegendBackgroundColor #434c5e
+skinparam LexicalBackgroundColor #434c5e
+skinparam MachineBackgroundColor #434c5e
+skinparam NodeBackgroundColor #434c5e
+skinparam ObjectBackgroundColor #434c5e
+skinparam PackageBackgroundColor #434c5e
+skinparam ParticipantBackgroundColor #434c5e
+skinparam PartitionBackgroundColor #434c5e
+skinparam PersonBackgroundColor #434c5e
+skinparam QueueBackgroundColor #434c5e
+skinparam RectangleBackgroundColor #434c5e
+skinparam RequirementBackgroundColor #434c5e
+skinparam SequenceBoxBackgroundColor #434c5e
+skinparam SequenceDividerBackgroundColor #434c5e
+skinparam SequenceGroupBackgroundColor #434c5e
+skinparam SequenceGroupBodyBackgroundColor #434c5e
+skinparam SequenceLifeLineBackgroundColor #434c5e
+skinparam SequenceReferenceBackgroundColor #434c5e
+skinparam SequenceReferenceHeaderBackgroundColor #434c5e
+skinparam StackBackgroundColor #434c5e
+skinparam StateBackgroundColor #434c5e
+skinparam StereotypeABackgroundColor #434c5e
+skinparam StereotypeCBackgroundColor #434c5e
+skinparam StereotypeEBackgroundColor #434c5e
+skinparam StereotypeIBackgroundColor #434c5e
+skinparam StereotypeNBackgroundColor #434c5e
+skinparam StorageBackgroundColor #434c5e
+skinparam SwimlaneTitleBackgroundColor #434c5e
+skinparam TitleBackgroundColor #434c5e
+skinparam UsecaseBackgroundColor #434c5e
+
+skinparam ActivityBorderColor #eceff4
+skinparam ActivityDiamondBorderColor #eceff4
+skinparam ActorBorderColor #eceff4
+skinparam AgentBorderColor #eceff4
+skinparam ArchimateBorderColor #eceff4
+skinparam ArtifactBorderColor #eceff4
+skinparam BiddableBorderColor #eceff4
+skinparam BoundaryBorderColor #eceff4
+skinparam CardBorderColor #eceff4
+skinparam ClassBorderColor #eceff4
+skinparam CloudBorderColor #eceff4
+skinparam CollectionsBorderColor #eceff4
+skinparam ComponentBorderColor #eceff4
+skinparam ControlBorderColor #eceff4
+skinparam DatabaseBorderColor #eceff4
+skinparam DesignedBorderColor #eceff4
+'skinparam DiagramBorderColor #eceff4
+skinparam DomainBorderColor #eceff4
+skinparam EntityBorderColor #eceff4
+skinparam FileBorderColor #eceff4
+skinparam FolderBorderColor #eceff4
+skinparam FrameBorderColor #eceff4
+skinparam HexagonBorderColor #eceff4
+skinparam InterfaceBorderColor #eceff4
+skinparam LegendBorderColor #eceff4
+skinparam LexicalBorderColor #eceff4
+skinparam MachineBorderColor #eceff4
+skinparam NodeBorderColor #eceff4
+skinparam ObjectBorderColor #eceff4
+skinparam PackageBorderColor #eceff4
+skinparam PageBorderColor #eceff4
+skinparam ParticipantBorderColor #eceff4
+skinparam PartitionBorderColor #eceff4
+skinparam PersonBorderColor #eceff4
+skinparam QueueBorderColor #eceff4
+skinparam RectangleBorderColor #eceff4
+skinparam RequirementBorderColor #eceff4
+skinparam SequenceBoxBorderColor #eceff4
+skinparam SequenceDividerBorderColor #eceff4
+skinparam SequenceGroupBorderColor #eceff4
+skinparam SequenceLifeLineBorderColor #eceff4
+skinparam SequenceReferenceBorderColor #eceff4
+skinparam StackBorderColor #eceff4
+skinparam StateBorderColor #eceff4
+skinparam StereotypeABorderColor #eceff4
+skinparam StereotypeCBorderColor #eceff4
+skinparam StereotypeEBorderColor #eceff4
+skinparam StereotypeIBorderColor #eceff4
+skinparam StereotypeNBorderColor #eceff4
+skinparam StorageBorderColor #eceff4
+skinparam SwimlaneBorderColor #eceff4
+skinparam TitleBorderColor #eceff4
+skinparam UsecaseBorderColor #eceff4
+
+skinparam Note {
+	BackgroundColor #88C0D0
+	BorderColor #eceff4
+	FontColor #2E3440
+}
+
+skinparam Note {
+	StartColor #eceff4
+	EndColor #eceff4
+}
+
+skinparam State {
+	StartColor #eceff4
+	EndColor #eceff4
+}

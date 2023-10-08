@@ -1,0 +1,35 @@
+{
+  "name": "marp-template",
+  "version": "0.0.1",
+  "scripts": {
+    "lint": "run-s --continue-on-error lint:*",
+    "lint:eslint": "eslint --ext \".js\" --ignore-path .gitignore .",
+    "lint:prettier": "prettier --log-level warn --check --ignore-path .gitignore .",
+    "lint:textlint": "textlint --ignore-path .gitignore .",
+    "fix": "run-s --continue-on-error fix:*",
+    "fix:eslint": "eslint --ext \".js\" --ignore-path .gitignore --fix .",
+    "fix:prettier": "prettier --log-level warn --write --ignore-path .gitignore .",
+    "fix:textlint": "textlint --fix --ignore-path .gitignore .",
+    "download": "run-s download:*",
+    "download:plantuml": "node plantuml-download.js",
+    "export": "run-s download:* export:*",
+    "export:html": "marp slides.md --output dist/output.html --allow-local-files",
+    "export:pptx": "marp slides.md --output dist/output.pptx --allow-local-files",
+    "export:pdf": "marp slides.md --output dist/output.pdf --allow-local-files"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^3.3.1",
+    "eslint": "^8.51.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^9.0.0",
+    "markdown-it-container": "^3.0.0",
+    "mime-types": "^2.1.35",
+    "nord-marp-theme": "github:ansanloms/nord-marp-theme",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.0.3",
+    "prismjs": "^1.29.0",
+    "textlint": "^13.3.3",
+    "textlint-rule-preset-ja-spacing": "^2.3.0",
+    "textlint-rule-preset-ja-technical-writing": "^8.0.0"
+  }
+}
