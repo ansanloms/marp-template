@@ -8,7 +8,10 @@ const mime = require("mime-types");
 
 const plantuml = {
   ...require("./src/plantuml"),
-  options: require("./plantuml.config"),
+  options: {
+    dist: path.resolve(__dirname, "./bin/plantuml.jar"),
+    config: path.resolve(__dirname, "./plantuml-config.puml"),
+  },
 };
 
 loadLanguages(["jsx", "php"]);
@@ -17,7 +20,7 @@ module.exports = {
   html: true,
 
   themeSet: path.join(__dirname, "/node_modules/nord-marp-theme/dist"),
-  theme: path.join(__dirname, "/assets/styles/main.css"),
+  theme: path.join(__dirname, "/assets/styles/custom.css"),
 
   engine: ({ marp }) => {
     marp.highlighter = (code, lang) => {
@@ -42,6 +45,14 @@ module.exports = {
             : defaultRender(tokens, idx, options, env, self);
         };
       })
+      .use(require("markdown-it-container"), "note", {
+        render: (tokens, idx) =>
+          tokens[idx].nesting === 1
+            ? `<div class="note ${tokens[idx].info
+                .trim()
+                .slice("note".length + 1)}">`
+            : `</div>`,
+      })
       .use((md) => {
         const defaultRender = md.renderer.rules.image;
 
@@ -60,13 +71,35 @@ module.exports = {
           return defaultRender(tokens, idx, options, env, self);
         };
       })
-      .use(require("markdown-it-container"), "note", {
-        render: (tokens, idx) =>
-          tokens[idx].nesting === 1
-            ? `<div class="note ${tokens[idx].info
-                .trim()
-                .slice("note".length + 1)}">`
-            : `</div>`,
+      .use((md) => {
+        const defaultRender =
+          md.renderer.rules.marpit_advanced_background_image_open;
+
+        md.renderer.rules.marpit_advanced_background_image_open = (
+          tokens,
+          idx,
+          options,
+          env,
+          self,
+        ) => {
+          const token = tokens[idx];
+          const styleIndex = token.attrIndex("style");
+          const style = token.attrs[styleIndex][1];
+
+          token.attrs[styleIndex][1] = style.replace(
+            /background-image:url\("(.*)"\);/g,
+            (match, src) => {
+              const content = fs.readFileSync(path.join(__dirname, src));
+              const dataUri = `data:${mime.lookup(
+                src,
+              )};base64,${content.toString("base64")}`;
+
+              return `background-image:url("${dataUri}");`;
+            },
+          );
+
+          return defaultRender(tokens, idx, options, env, self);
+        };
       });
 
     return marp;
