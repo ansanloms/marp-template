@@ -1,9 +1,9 @@
 const path = require("path");
 const plantuml = require("./plantuml");
 
-const version = "v1.2023.6";
+const version = "v1.2024.3";
 const checksum =
-  "bf2dee10750fd1794ad9eac7de020064d113838ec169448a16b639dbfb67617d";
+  "519a4a7284c6a0357c369e4bb0caf72c4bfbbde851b8c6d6bbdb7af3c01fc82f";
 const dist = path.resolve(__dirname, "../bin/plantuml.jar");
 
 plantuml
