@@ -11,6 +11,11 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import MarkdownItGitHubAlerts from "markdown-it-github-alerts";
+// nord-marp-theme の CSS を text import で取り込む。Deno のモジュールキャッシュ
+// が効くので、初回以降は jsdelivr への HTTP リクエストが発生しない。
+import nordThemeSource from "nord-marp-theme/dist/nord.css" with {
+  type: "text",
+};
 
 const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
 
@@ -20,25 +25,16 @@ const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
 //     ため、SSR (jsdom/svgdom) 由来のレイアウト計算ズレを根本回避できる
 //   - ブラウザ側で mermaid を制御するスクリプト (Nord パレット / MermaidConfig /
 //     sandbox 経由 render を内包)。lint / fmt 対象にするため別ファイルに切出
-// 加えて nord-marp-theme は jsdelivr 経由の remote import なので fetch で取得し、
-// themeSet 配下 (dist/themes/nord.css) に書き出して Marp CLI が参照できる
-// ローカルファイルにする。
-const [mermaidBundleSource, mermaidScriptSource, nordThemeSource] =
-  await Promise.all([
-    Deno.readTextFile(
-      new URL(import.meta.resolve("mermaid/dist/mermaid.min.js")),
-    ),
-    Deno.readTextFile(path.join(__dirname, "assets/scripts/mermaid.mjs")),
-    fetch(import.meta.resolve("nord-marp-theme/dist/nord.css")).then((res) => {
-      if (!res.ok) {
-        throw new Error(
-          `Failed to fetch nord-marp-theme: ${res.status} ${res.statusText}`,
-        );
-      }
-      return res.text();
-    }),
-  ]);
+const [mermaidBundleSource, mermaidScriptSource] = await Promise.all([
+  Deno.readTextFile(
+    new URL(import.meta.resolve("mermaid/dist/mermaid.min.js")),
+  ),
+  Deno.readTextFile(path.join(__dirname, "assets/scripts/mermaid.mjs")),
+]);
 
+// nord-marp-theme は text import で読み込んだ文字列を themeSet 配下
+// (dist/themes/nord.css) に書き出して Marp CLI が参照できるローカル
+// ファイルにする。
 const themesDir = path.join(__dirname, "dist/themes");
 await Deno.mkdir(themesDir, { recursive: true });
 await Deno.writeTextFile(path.join(themesDir, "nord.css"), nordThemeSource);

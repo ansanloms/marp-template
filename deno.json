@@ -31,7 +31,7 @@
   "tasks": {
     "marp": {
       "description": "Run marp command",
-      "command": "deno --quiet run --allow-env --allow-sys --allow-run --allow-read --allow-write --allow-net @marp-team/marp-cli"
+      "command": "deno --quiet run --unstable-raw-imports --allow-env --allow-sys --allow-run --allow-read --allow-write --allow-net @marp-team/marp-cli"
     },
     "textlint": {
       "description": "Run textlint command",
@@ -43,8 +43,9 @@
     "fix": "deno task fix:deno && deno task fix:textlint .; deno task lint",
     "fix:deno": "deno lint --fix && deno fmt",
     "fix:textlint": "deno task textlint --ignore-path .gitignore --fix",
+    "clean": "rm -rf ./dist",
     "check": "deno check **/*.ts",
-    "build": "deno task build:html; deno task build:pdf; deno task build:pptx; deno task build:image",
+    "build": "deno task clean; deno task build:html; deno task build:pdf; deno task build:pptx; deno task build:image",
     "build:html": "deno task marp slides.md --config-file marp.config.mjs --output ./dist/slides.html",
     "build:pdf": "deno task marp slides.md --config-file marp.config.mjs --allow-local-files --pdf-outlines --output ./dist/slides.pdf",
     "build:pptx": "deno task marp slides.md --config-file marp.config.mjs --allow-local-files --pptx --output ./dist/slides.pptx",
