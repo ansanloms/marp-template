@@ -229,12 +229,11 @@ export default defineConfig({
       .withPostprocess((_markdown, _env, html, css, comments) => ({
         // 2 つの <script> を HTML 末尾に inline 注入する:
         //   1. mermaid 本体 (UMD bundle、globalThis.mermaid を設定)
-        //   2. assets/scripts/mermaid.mjs (Nord パレット / MermaidConfig /
-        //      sandbox 経由 render を内包)
+        //   2. assets/scripts/mermaid.mjs (Nord パレット / MermaidConfig / sandbox 経由 render を内包)
         // <pre class="mermaid"> の見た目は assets/styles/custom.css 側に閉じる。
-        html: html + `
-<script>${mermaidBundleSource}</script>
-<script>${mermaidScriptSource}</script>`,
+        html: html +
+          `<script>${mermaidBundleSource}</script>` +
+          `<script>${mermaidScriptSource}</script>`,
         css,
         comments,
       })),
