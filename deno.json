@@ -8,6 +8,7 @@
     "plugins": ["jsr:@aireone/deno-lint-curly"]
   },
   "exclude": ["dist/"],
+  "unstable": ["raw-imports"],
   "imports": {
     "@marp-team/marp-cli": "npm:@marp-team/marp-cli@4.4.0",
     "@marp-team/marp-core": "npm:@marp-team/marp-core@4.3.0",
@@ -31,7 +32,7 @@
   "tasks": {
     "marp": {
       "description": "Run marp command",
-      "command": "deno --quiet run --unstable-raw-imports --allow-env --allow-sys --allow-run --allow-read --allow-write --allow-net @marp-team/marp-cli"
+      "command": "deno --quiet run --allow-env --allow-sys --allow-run --allow-read --allow-write --allow-net @marp-team/marp-cli"
     },
     "textlint": {
       "description": "Run textlint command",
