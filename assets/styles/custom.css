@@ -1,35 +1,83 @@
 @import-theme "nord";
-@import url("https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap");
 
-section.split {
-  display: grid;
-  grid-template-columns: repeat(2, calc(100% / 2));
-  grid-gap: 1rem;
-  align-content: center;
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Zen+Maru+Gothic&display=swap");
+
+:root {
+  /* Typography */
+  --font-default: "Zen Maru Gothic", sans-serif;
+  --font-code: "Source Code Pro", monospace;
 }
 
-section.lead {
-  display: grid;
-  align-items: center;
-  justify-items: center;
+/* 字下げ */
+p::before {
+  content: "　";
 }
 
-pre code {
-  font-size: 16px !important;
+/* mermaid の foreignObject ラベル内 <p> には字下げを当てない */
+.mermaid {
+  & p::before {
+    content: none;
+  }
 }
 
-img {
-  display: inline-block;
-  margin: 0 auto;
+/* Shiki transformer 用 (transformerMetaHighlight / transformerMetaWordHighlight
+   / transformerNotationFocus)。行・語ハイライトは <code> 直下の
+   <span class="line"> に付くため code 起点で書く。 */
+code {
+  /* 行間を広げて .highlighted-word の border-radius が隣の行に侵食されないようにする。
+     line-height 分の余白は line box 上下に確保され、background 塗り範囲とは分離される。 */
+  line-height: 1.5;
+
+  > .line {
+    display: inline-block;
+
+    &.highlighted {
+      /* 親 .line は display: inline-block 済み。width: 100% だけで <code> の
+         content area 全幅に背景を塗る。padding / 負 margin で外側へ張り出す
+         手法は pre 側の padding 値に依存して text 位置がずれるため使わない。 */
+      width: 100%;
+      background-color: color-mix(in srgb, var(--nord3) 50%, transparent);
+    }
+
+    .highlighted-word {
+      font-weight: bold;
+      border-radius: 0.4rem;
+      padding: 0 0.4rem;
+      /* --nord13 (黄) を背景塗りのみで強調。outline は親 .line の inline-block
+         に詰められて上下が切れるため使わない。alpha を厚めにして視認性を保つ。 */
+      background-color: color-mix(in srgb, var(--nord13) 40%, transparent);
+    }
+  }
 }
 
-.uml {
-  max-width: 100%;
-  max-height: 100%;
-  text-align: center;
+/* has-focused クラスは <pre> 側に付くため、pre 起点で書く。 */
+pre.has-focused {
+  > code {
+    > .line:not(.focused) {
+      opacity: 0.8;
+      filter: blur(0.125rem);
+    }
+  }
 }
 
-.uml > svg {
-  max-width: 100%;
-  max-height: 100%;
+/** 引用リンク **/
+.quote {
+  display: block;
+  font-size: 60%;
+  text-align: right;
+  font-style: italic;
+
+  &::before {
+    /* 和文フォントだと U+2015 を並べても字間が空いて実線にならないため、
+       擬似要素を空にして background で 1 本の線を引く。長さは em で
+       font-size に追従、色は currentColor で .quote の文字色を継承する。 */
+    content: "";
+    display: inline-block;
+    width: 3em;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.6;
+    vertical-align: middle;
+    margin-right: 0.5em;
+  }
 }
