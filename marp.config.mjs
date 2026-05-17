@@ -11,26 +11,26 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import MarkdownItGitHubAlerts from "markdown-it-github-alerts";
-// nord-marp-theme の CSS を text import で取り込む。Deno のモジュールキャッシュ
-// が効くので、初回以降は jsdelivr への HTTP リクエストが発生しない。
+// 出力 HTML 末尾に <script> として inline 注入するソースと nord-marp-theme の
+// CSS をすべて text import で取り込む。実行可能な .mjs / .min.js も含めて
+// `with { type: "text" }` を付けることで Deno が中身をパースせず文字列として
+// 渡すため、Deno のモジュール解決とキャッシュに乗る。
+//   - mermaid 公式 UMD bundle (dynamic chunk 込みの単一ファイル)。これにより
+//     PNG/PDF 化を担う Chromium がブラウザ実 DOM 上で mermaid を render するため、
+//     SSR (jsdom/svgdom) 由来のレイアウト計算ズレを根本回避できる
+//   - ブラウザ側で mermaid を制御するスクリプト (Nord パレット / MermaidConfig /
+//     sandbox 経由 render を内包)
+import mermaidBundleSource from "mermaid/dist/mermaid.min.js" with {
+  type: "text",
+};
+import mermaidScriptSource from "./assets/scripts/mermaid.mjs" with {
+  type: "text",
+};
 import nordThemeSource from "nord-marp-theme/dist/nord.css" with {
   type: "text",
 };
 
 const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
-
-// 出力 HTML 末尾に <script> として inline 注入する 2 つのソースを並列読込:
-//   - mermaid 公式 UMD bundle (dynamic chunk も含む単一ファイル)。これにより
-//     PNG/PDF 化を担う Chromium がブラウザ実 DOM 上で mermaid を render する
-//     ため、SSR (jsdom/svgdom) 由来のレイアウト計算ズレを根本回避できる
-//   - ブラウザ側で mermaid を制御するスクリプト (Nord パレット / MermaidConfig /
-//     sandbox 経由 render を内包)。lint / fmt 対象にするため別ファイルに切出
-const [mermaidBundleSource, mermaidScriptSource] = await Promise.all([
-  Deno.readTextFile(
-    new URL(import.meta.resolve("mermaid/dist/mermaid.min.js")),
-  ),
-  Deno.readTextFile(path.join(__dirname, "assets/scripts/mermaid.mjs")),
-]);
 
 // nord-marp-theme は text import で読み込んだ文字列を themeSet 配下
 // (dist/themes/nord.css) に書き出して Marp CLI が参照できるローカル
@@ -38,6 +38,12 @@ const [mermaidBundleSource, mermaidScriptSource] = await Promise.all([
 const themesDir = path.join(__dirname, "dist/themes");
 await Deno.mkdir(themesDir, { recursive: true });
 await Deno.writeTextFile(path.join(themesDir, "nord.css"), nordThemeSource);
+
+// custom.css を marp.config.mjs 自身の位置基準で絶対パス解決する。これにより
+// 本ファイルを外部プロジェクトから import しても custom.css の位置が崩れない。
+const customThemePath = path.fromFileUrl(
+  import.meta.resolve("./assets/styles/custom.css"),
+);
 
 /**
  * Marpit の render() が返す結果。@marp-team/marpit の RenderResult をそのまま参照する。
@@ -139,7 +145,7 @@ class PostprocessMarpitEngine extends Marp {
 
 export default defineConfig({
   themeSet: themesDir,
-  theme: "./assets/styles/custom.css",
+  theme: customThemePath,
   html: true,
   engine: async (options) =>
     new PostprocessMarpitEngine(options)
