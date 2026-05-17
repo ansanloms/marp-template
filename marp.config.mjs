@@ -30,12 +30,12 @@ import nordThemeSource from "nord-marp-theme/dist/nord.css" with {
   type: "text",
 };
 
-const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
-
 // nord-marp-theme は text import で読み込んだ文字列を themeSet 配下
-// (dist/themes/nord.css) に書き出して Marp CLI が参照できるローカル
-// ファイルにする。
-const themesDir = path.join(__dirname, "dist/themes");
+// (<cwd>/dist/themes/nord.css) に書き出して Marp CLI が参照できるローカル
+// ファイルにする。cwd 基準にしているのは、本 marp.config.mjs を外部プロジェクト
+// から import しても、書き出し先が呼び出し元プロジェクトの配下に収まるように
+// するため (本ファイルを抱えるパッケージ側に副作用を出さない)。
+const themesDir = path.join(Deno.cwd(), "dist/themes");
 await Deno.mkdir(themesDir, { recursive: true });
 await Deno.writeTextFile(path.join(themesDir, "nord.css"), nordThemeSource);
 
@@ -211,9 +211,11 @@ export default defineConfig({
           const srcIndex = token.attrIndex("src");
           const src = token.attrs[srcIndex][1];
 
-          const content = encodeBase64(Deno.readFileSync(
-            path.resolve(path.join(__dirname, src)),
-          ));
+          // src は markdown 内に書かれた相対パス。cwd 基準で解決する
+          // (絶対パスならそのまま使われる)。これで本 config を外部から
+          // import しても、画像は呼び出し元プロジェクトの slides.md 配下
+          // から自然に拾える。
+          const content = encodeBase64(Deno.readFileSync(path.resolve(src)));
           const dataUri = `data:${
             contentType(path.extname(src))
           };base64,${content}`;
