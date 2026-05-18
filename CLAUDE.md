@@ -76,7 +76,7 @@ const sayHello = (name) => console.log(`Hello ${name}`);
 ```
 ````
 
-加えて `@shikijs/transformers` の transformer 3 種を有効化している。装飾用 CSS は `assets/styles/custom.css` の `code` ブロック (`code > .line` 起点) に集約している。
+加えて `@shikijs/transformers` の transformer 3 種を有効化している。装飾用 CSS は `@ansanloms/nord-marp-theme` 側 (`pre code > .line` および `pre.has-focused` 起点) に集約されている。
 
 | 機能         | 記法                                  | transformer                    | 付与クラス                                |
 | ------------ | ------------------------------------- | ------------------------------ | ----------------------------------------- |
@@ -127,6 +127,33 @@ console.log(c);
 > 補足情報をここに書く。
 ```
 
+### タスクリスト
+
+`markdown-it-task-lists` で GFM のチェックボックス記法を `<input type="checkbox">` として描画する。装飾は `@ansanloms/nord-marp-theme` 側 (`li:has(> input[type=checkbox])` 起点) に集約されている。
+
+```markdown
+- [x] 完了したタスク
+- [ ] 未完了のタスク
+  - [x] ネストした完了タスク
+  - [ ] ネストした未完了タスク
+```
+
+### 脚注
+
+`markdown-it-footnote` で `[^N]` 構文の脚注をサポートする。`markdown-it-footnote` は標準ではドキュメント末尾に脚注を集約するが、本テンプレートでは `plugins/markdown-it-footnote-per-slide.mjs` でスライド単位に再配置している。
+
+- 同じスライド内の脚注は、そのスライド末尾 (`<section class="footnotes">`) に固まる。
+- 同じ脚注 id が複数スライドで参照される場合は、最初に登場するスライドにのみ配置する (HTML id 衝突を避けるため)。
+- 本文の参照番号 `[N]` と脚注リストの `<ol>` 番号は `<ol start="N">` で一致させる。
+
+```markdown
+本文に脚注を挿入する[^1]。複数の脚注[^2] も同じスライド内で書ける。
+
+[^1]: 1 つ目の脚注。
+
+[^2]: 2 つ目の脚注。
+```
+
 ### 数式 (KaTeX)
 
 marp-core が標準で KaTeX を載せている。
@@ -146,7 +173,7 @@ marp-core が標準で KaTeX を載せている。
 ```
 ````
 
-注意: `md.render` ではなく `md.renderInline` を使う実装である (`marp.config.mjs` L167-)。`md.render` を呼ぶと Marpit の `render` が走ってスライド分割系の出力が混入し、HTML が破綻する。同じ理由で `<p>` も生成されず、`p::before` の字下げが `.quote` 内に入り込まない。
+注意: `md.render` ではなく `md.renderInline` を使う実装である (`marp.config.mjs` の `quote` fence ハンドラ)。`md.render` を呼ぶと Marpit の `render` が走ってスライド分割系の出力が混入し、HTML が破綻する。同じ理由で `<p>` も生成されず、`p::before` の字下げが `.quote` 内に入り込まない。
 
 ### Mermaid 図
 

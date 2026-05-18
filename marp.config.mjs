@@ -10,6 +10,9 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import MarkdownItGitHubAlerts from "markdown-it-github-alerts";
+import MarkdownItTaskLists from "markdown-it-task-lists";
+import MarkdownItFootnote from "markdown-it-footnote";
+import markdownItFootnotePerSlide from "./plugins/markdown-it-footnote-per-slide.mjs";
 // 出力 HTML 末尾に <script> として inline 注入するソースと @ansanloms/nord-marp-theme
 // の CSS をすべて text import で取り込む。実行可能な .mjs / .min.js も含めて
 // `with { type: "text" }` を付けることで Deno が中身をパースせず文字列として
@@ -145,6 +148,9 @@ export default defineConfig({
           return defaultRender(tokens, idx, options, env, renderer);
         };
       })
-      .use(MarkdownItGitHubAlerts);
+      .use(MarkdownItGitHubAlerts)
+      .use(MarkdownItTaskLists)
+      .use(MarkdownItFootnote)
+      .use(markdownItFootnotePerSlide);
   },
 });

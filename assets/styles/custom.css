@@ -20,46 +20,6 @@ p::before {
   }
 }
 
-/* Shiki transformer 用 (transformerMetaHighlight / transformerMetaWordHighlight
-   / transformerNotationFocus)。行・語ハイライトは <code> 直下の
-   <span class="line"> に付くため code 起点で書く。 */
-code {
-  /* 行間を広げて .highlighted-word の border-radius が隣の行に侵食されないようにする。
-     line-height 分の余白は line box 上下に確保され、background 塗り範囲とは分離される。 */
-  line-height: 1.5;
-
-  > .line {
-    display: inline-block;
-
-    &.highlighted {
-      /* 親 .line は display: inline-block 済み。width: 100% だけで <code> の
-         content area 全幅に背景を塗る。padding / 負 margin で外側へ張り出す
-         手法は pre 側の padding 値に依存して text 位置がずれるため使わない。 */
-      width: 100%;
-      background-color: color-mix(in srgb, var(--nord3) 50%, transparent);
-    }
-
-    .highlighted-word {
-      font-weight: bold;
-      border-radius: 0.4rem;
-      padding: 0 0.4rem;
-      /* --nord13 (黄) を背景塗りのみで強調。outline は親 .line の inline-block
-         に詰められて上下が切れるため使わない。alpha を厚めにして視認性を保つ。 */
-      background-color: color-mix(in srgb, var(--nord13) 40%, transparent);
-    }
-  }
-}
-
-/* has-focused クラスは <pre> 側に付くため、pre 起点で書く。 */
-pre.has-focused {
-  > code {
-    > .line:not(.focused) {
-      opacity: 0.8;
-      filter: blur(0.125rem);
-    }
-  }
-}
-
 /** 引用リンク **/
 .quote {
   display: block;
