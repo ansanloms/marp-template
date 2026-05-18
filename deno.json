@@ -48,6 +48,7 @@
     "check": "deno check **/*.ts",
     "build": "deno task clean; deno task build:html; deno task build:pdf; deno task build:pptx; deno task build:image",
     "build:html": "deno task marp slides.md --config-file marp.config.mjs --output ./dist/slides.html",
+    "watch": "deno task marp slides.md --config-file marp.config.mjs --output ./dist/slides.html --watch",
     "build:pdf": "deno task marp slides.md --config-file marp.config.mjs --allow-local-files --pdf-outlines --output ./dist/slides.pdf",
     "build:pptx": "deno task marp slides.md --config-file marp.config.mjs --allow-local-files --pptx --output ./dist/slides.pptx",
     "build:image": "deno task marp slides.md --config-file marp.config.mjs --allow-local-files --images png --output ./dist/png/slide.png"
