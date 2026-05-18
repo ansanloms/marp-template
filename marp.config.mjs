@@ -11,8 +11,8 @@ import {
   transformerNotationFocus,
 } from "@shikijs/transformers";
 import MarkdownItGitHubAlerts from "markdown-it-github-alerts";
-// 出力 HTML 末尾に <script> として inline 注入するソースと nord-marp-theme の
-// CSS をすべて text import で取り込む。実行可能な .mjs / .min.js も含めて
+// 出力 HTML 末尾に <script> として inline 注入するソースと @ansanloms/nord-marp-theme
+// の CSS をすべて text import で取り込む。実行可能な .mjs / .min.js も含めて
 // `with { type: "text" }` を付けることで Deno が中身をパースせず文字列として
 // 渡すため、Deno のモジュール解決とキャッシュに乗る。
 //   - mermaid 公式 UMD bundle (dynamic chunk 込みの単一ファイル)。これにより
@@ -26,11 +26,11 @@ import mermaidBundleSource from "mermaid/dist/mermaid.min.js" with {
 import mermaidScriptSource from "./assets/scripts/mermaid.mjs" with {
   type: "text",
 };
-import nordThemeSource from "nord-marp-theme/dist/nord.css" with {
+import nordThemeSource from "@ansanloms/nord-marp-theme/dist/nord.css" with {
   type: "text",
 };
 
-// nord-marp-theme は text import で読み込んだ文字列を themeSet 配下
+// @ansanloms/nord-marp-theme は text import で読み込んだ文字列を themeSet 配下
 // (<cwd>/dist/themes/nord.css) に書き出して Marp CLI が参照できるローカル
 // ファイルにする。cwd 基準にしているのは、本 marp.config.mjs を外部プロジェクト
 // から import しても、書き出し先が呼び出し元プロジェクトの配下に収まるように
