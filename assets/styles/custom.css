@@ -13,8 +13,8 @@ p::before {
   content: "　";
 }
 
-/* mermaid の foreignObject ラベル内 <p> には字下げを当てない */
 .mermaid {
+  /* mermaid の foreignObject ラベル内 <p> には字下げを当てない */
   & p::before {
     content: none;
   }
