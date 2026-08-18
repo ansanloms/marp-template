@@ -10,7 +10,7 @@
   "exclude": ["dist/"],
   "unstable": ["raw-imports"],
   "imports": {
-    "@marp-team/marp-cli": "npm:@marp-team/marp-cli@4.4.0",
+    "@marp-team/marp-cli": "npm:@marp-team/marp-cli@4.5.0",
     "@proofdict/textlint-rule-proofdict": "npm:@proofdict/textlint-rule-proofdict@3.1.2",
     "@shikijs/markdown-it": "npm:@shikijs/markdown-it@4.4.3",
     "@shikijs/transformers": "npm:@shikijs/transformers@4.4.3",
