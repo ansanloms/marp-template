@@ -2,7 +2,7 @@
   "version": "5",
   "specifiers": {
     "jsr:@aireone/deno-lint-curly@*": "0.2.0",
-    "jsr:@std/encoding@1.0.10": "1.0.10",
+    "jsr:@std/encoding@1.0.11": "1.0.11",
     "jsr:@std/html@1.0.7": "1.0.7",
     "jsr:@std/internal@^1.0.14": "1.0.14",
     "jsr:@std/media-types@1.1.0": "1.1.0",
@@ -26,8 +26,8 @@
     "@aireone/deno-lint-curly@0.2.0": {
       "integrity": "c182ea5d2ed999c06ffa88a21aac2aed3cf0d14a1128d7fad3034337f7822b48"
     },
-    "@std/encoding@1.0.10": {
-      "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
+    "@std/encoding@1.0.11": {
+      "integrity": "e7cef2f0b3153bccc17431e7c864a1de03a4b6d9647389c43e08aaa775d37385"
     },
     "@std/html@1.0.7": {
       "integrity": "175c818905a6e75743c69c251395e273d82698e58cfe7dd76268d70e28b8d8fe"
@@ -4517,7 +4517,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@std/encoding@1.0.10",
+      "jsr:@std/encoding@1.0.11",
       "jsr:@std/html@1.0.7",
       "jsr:@std/media-types@1.1.0",
       "jsr:@std/path@1.1.6",
