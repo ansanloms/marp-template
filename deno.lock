@@ -10,7 +10,7 @@
     "npm:@marp-team/marp-cli@4.4.0": "4.4.0",
     "npm:@proofdict/textlint-rule-proofdict@3.1.2": "3.1.2",
     "npm:@shikijs/markdown-it@4.4.3": "4.4.3",
-    "npm:@shikijs/transformers@4.0.2": "4.0.2",
+    "npm:@shikijs/transformers@4.4.3": "4.4.3",
     "npm:@textlint-ja/textlint-rule-preset-ai-writing@1.7.0": "1.7.0",
     "npm:markdown-it-footnote@4.0.0": "4.0.0",
     "npm:markdown-it-github-alerts@1.0.1": "1.0.1_markdown-it@14.1.1",
@@ -341,21 +341,11 @@
       ],
       "bin": true
     },
-    "@shikijs/core@4.0.2": {
-      "integrity": "sha512-hxT0YF4ExEqB8G/qFdtJvpmHXBYJ2lWW7qTHDarVkIudPFE6iCIrqdgWxGn5s+ppkGXI0aEGlibI0PAyzP3zlw==",
-      "dependencies": [
-        "@shikijs/primitive@4.0.2",
-        "@shikijs/types@4.0.2",
-        "@shikijs/vscode-textmate",
-        "@types/hast",
-        "hast-util-to-html"
-      ]
-    },
     "@shikijs/core@4.4.3": {
       "integrity": "sha512-QCR4q2ZO/ILJEuwiBMel4wdcTDb1JGwfjKTxPDF6x8ixOaluPrVqIn06C99AcRPhmYlBR56d/Fb+GN58GzExpg==",
       "dependencies": [
-        "@shikijs/primitive@4.4.3",
-        "@shikijs/types@4.4.3",
+        "@shikijs/primitive",
+        "@shikijs/types",
         "@shikijs/vscode-textmate",
         "@types/hast",
         "hast-util-to-html"
@@ -364,7 +354,7 @@
     "@shikijs/engine-javascript@4.4.3": {
       "integrity": "sha512-FbOjFJp9VLdo1Wevs10BBtVxiTWwNLqZh5Gkhjgda/ioL15YOgeSl9n+6XMa3qRlPQzfhFNe641SrynFHYG0nQ==",
       "dependencies": [
-        "@shikijs/types@4.4.3",
+        "@shikijs/types",
         "@shikijs/vscode-textmate",
         "oniguruma-to-es"
       ]
@@ -372,14 +362,14 @@
     "@shikijs/engine-oniguruma@4.4.3": {
       "integrity": "sha512-EcOQkxdxGQrc1Row/cC2c96/v1dbZqGnEVu1qTuT/MJmp6+cXCvQussowVmCv5Tqr3KuY3c7IbM6HTW3LJ1k9w==",
       "dependencies": [
-        "@shikijs/types@4.4.3",
+        "@shikijs/types",
         "@shikijs/vscode-textmate"
       ]
     },
     "@shikijs/langs@4.4.3": {
       "integrity": "sha512-ePic0yfAJGOF83D5wBHK/00EjK65oahBYxFk5epgq33WRv7X9UuxLEV8PtR0szC0z8dl7INIpIodB99JRFlR+A==",
       "dependencies": [
-        "@shikijs/types@4.4.3"
+        "@shikijs/types"
       ]
     },
     "@shikijs/markdown-it@4.4.3": {
@@ -389,18 +379,10 @@
         "shiki"
       ]
     },
-    "@shikijs/primitive@4.0.2": {
-      "integrity": "sha512-M6UMPrSa3fN5ayeJwFVl9qWofl273wtK1VG8ySDZ1mQBfhCpdd8nEx7nPZ/tk7k+TYcpqBZzj/AnwxT9lO+HJw==",
-      "dependencies": [
-        "@shikijs/types@4.0.2",
-        "@shikijs/vscode-textmate",
-        "@types/hast"
-      ]
-    },
     "@shikijs/primitive@4.4.3": {
       "integrity": "sha512-m0wBeLDQDeIxRdUmrCPdQqfuUamDwRL5isCfYbguKD6NiaKpVbsv+3J81DyIKgNW5h4WAIIr8T4EkgQrBBxvaQ==",
       "dependencies": [
-        "@shikijs/types@4.4.3",
+        "@shikijs/types",
         "@shikijs/vscode-textmate",
         "@types/hast"
       ]
@@ -408,21 +390,14 @@
     "@shikijs/themes@4.4.3": {
       "integrity": "sha512-w8UHjeUnIR965KMWJHUPXOc2mNJUnK3vpVLYLvw5IYU2mnTTJ89E24OrJDBNiJDQ0qzb0tc4l7mrIXx5cFeIyw==",
       "dependencies": [
-        "@shikijs/types@4.4.3"
+        "@shikijs/types"
       ]
     },
-    "@shikijs/transformers@4.0.2": {
-      "integrity": "sha512-1+L0gf9v+SdDXs08vjaLb3mBFa8U7u37cwcBQIv/HCocLwX69Tt6LpUCjtB+UUTvQxI7BnjZKhN/wMjhHBcJGg==",
+    "@shikijs/transformers@4.4.3": {
+      "integrity": "sha512-oJSARV6NaWd+rnNJbtnpAdj3Zg0ZVyzsnMgb3vi3HA+35y8lBWUCpOnWsmyiXZIikY+x1BDqrQUgmxfzWh7Jvw==",
       "dependencies": [
-        "@shikijs/core@4.0.2",
-        "@shikijs/types@4.0.2"
-      ]
-    },
-    "@shikijs/types@4.0.2": {
-      "integrity": "sha512-qzbeRooUTPnLE+sHD/Z8DStmaDgnbbc/pMrU203950aRqjX/6AFHeDYT+j00y2lPdz0ywJKx7o/7qnqTivtlXg==",
-      "dependencies": [
-        "@shikijs/vscode-textmate",
-        "@types/hast"
+        "@shikijs/core",
+        "@shikijs/types"
       ]
     },
     "@shikijs/types@4.4.3": {
@@ -3507,12 +3482,12 @@
     "shiki@4.4.3": {
       "integrity": "sha512-Mb/GvXPHBAXdgGIcnfU5L3ldpn1XcxrGkPHwqgRx17/I2XRfqlFKk2vGkHWINn1kdXvzJZeuO3is6I9KLPFm0g==",
       "dependencies": [
-        "@shikijs/core@4.4.3",
+        "@shikijs/core",
         "@shikijs/engine-javascript",
         "@shikijs/engine-oniguruma",
         "@shikijs/langs",
         "@shikijs/themes",
-        "@shikijs/types@4.4.3",
+        "@shikijs/types",
         "@shikijs/vscode-textmate",
         "@types/hast"
       ]
@@ -4524,7 +4499,7 @@
       "npm:@marp-team/marp-cli@4.4.0",
       "npm:@proofdict/textlint-rule-proofdict@3.1.2",
       "npm:@shikijs/markdown-it@4.4.3",
-      "npm:@shikijs/transformers@4.0.2",
+      "npm:@shikijs/transformers@4.4.3",
       "npm:@textlint-ja/textlint-rule-preset-ai-writing@1.7.0",
       "npm:markdown-it-footnote@4.0.0",
       "npm:markdown-it-github-alerts@1.0.1",

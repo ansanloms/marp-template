@@ -13,7 +13,7 @@
     "@marp-team/marp-cli": "npm:@marp-team/marp-cli@4.4.0",
     "@proofdict/textlint-rule-proofdict": "npm:@proofdict/textlint-rule-proofdict@3.1.2",
     "@shikijs/markdown-it": "npm:@shikijs/markdown-it@4.4.3",
-    "@shikijs/transformers": "npm:@shikijs/transformers@4.0.2",
+    "@shikijs/transformers": "npm:@shikijs/transformers@4.4.3",
     "@std/encoding": "jsr:@std/encoding@1.0.11",
     "@std/html": "jsr:@std/html@1.0.7",
     "@std/media-types": "jsr:@std/media-types@1.1.0",
