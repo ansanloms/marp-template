@@ -48,6 +48,24 @@ module.exports = {
       "ja-space-between-half-and-full-width": {
         space: "always",
       },
+
+      // インラインコードの前後にもスペースを空ける。
+      // v3.0.0 で既定が「スペースなし」に変わったため明示する。
+      "ja-space-around-code": {
+        before: true,
+        after: true,
+      },
+
+      // リンクの前後にもスペースを空ける。
+      // v3.0.0 で既定が「スペースなし」に変わったため明示する。
+      "ja-space-around-link": {
+        before: true,
+        after: true,
+      },
+
+      // スラッシュ前後のスペース禁止は「lint / fix」等の既存の文体と
+      // 衝突するため無効にする。
+      "ja-no-space-around-slash": false,
     },
 
     // https://github.com/textlint-ja/textlint-rule-preset-JTF-style
