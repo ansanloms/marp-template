@@ -15,7 +15,7 @@
     "@shikijs/markdown-it": "npm:@shikijs/markdown-it@4.4.3",
     "@shikijs/transformers": "npm:@shikijs/transformers@4.0.2",
     "@std/encoding": "jsr:@std/encoding@1.0.10",
-    "@std/html": "jsr:@std/html@1.0.6",
+    "@std/html": "jsr:@std/html@1.0.7",
     "@std/media-types": "jsr:@std/media-types@1.1.0",
     "@std/path": "jsr:@std/path@1.1.4",
     "@textlint-ja/textlint-rule-preset-ai-writing": "npm:@textlint-ja/textlint-rule-preset-ai-writing@1.7.0",

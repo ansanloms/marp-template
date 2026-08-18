@@ -3,7 +3,7 @@
   "specifiers": {
     "jsr:@aireone/deno-lint-curly@*": "0.2.0",
     "jsr:@std/encoding@1.0.10": "1.0.10",
-    "jsr:@std/html@1.0.6": "1.0.6",
+    "jsr:@std/html@1.0.7": "1.0.7",
     "jsr:@std/internal@^1.0.12": "1.0.13",
     "jsr:@std/media-types@1.1.0": "1.1.0",
     "jsr:@std/path@1.1.4": "1.1.4",
@@ -29,8 +29,8 @@
     "@std/encoding@1.0.10": {
       "integrity": "8783c6384a2d13abd5e9e87a7ae0520a30e9f56aeeaa3bdf910a3eaaf5c811a1"
     },
-    "@std/html@1.0.6": {
-      "integrity": "eaf759c8141e0733ca30eb49e4c08d8e6ca442b85c4d51f9894a56f502993e08"
+    "@std/html@1.0.7": {
+      "integrity": "175c818905a6e75743c69c251395e273d82698e58cfe7dd76268d70e28b8d8fe"
     },
     "@std/internal@1.0.13": {
       "integrity": "2f9546691d4ac2d32859c82dff284aaeac980ddeca38430d07941e7e288725c0"
@@ -4504,7 +4504,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/encoding@1.0.10",
-      "jsr:@std/html@1.0.6",
+      "jsr:@std/html@1.0.7",
       "jsr:@std/media-types@1.1.0",
       "jsr:@std/path@1.1.4",
       "npm:@marp-team/marp-cli@4.4.0",
