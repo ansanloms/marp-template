@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-本ファイルは Claude Code 向けのプロジェクト指示書である。Marp スライドのテンプレートを編集する際の前提知識と、編集後に必ず通すべき lint / fix 手順をまとめる。
+本ファイルは Claude Code 向けのプロジェクト指示書である。Marp スライドのテンプレートを編集する際の前提知識と、編集後に必ず通すべき lint/fix 手順をまとめる。
 
 ## プロジェクト概要
 
@@ -120,7 +120,7 @@ console.log(c);
 
 ### GitHub 風アラート
 
-`> [!NOTE]` 等の記法をサポートする。利用できる種類は `NOTE` / `TIP` / `IMPORTANT` / `WARNING` / `CAUTION` である。
+`> [!NOTE]` 等の記法をサポートする。利用できる種類は `NOTE`/`TIP`/`IMPORTANT`/`WARNING`/`CAUTION` である。
 
 ```markdown
 > [!NOTE]
