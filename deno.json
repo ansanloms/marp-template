@@ -18,7 +18,7 @@
     "@std/html": "jsr:@std/html@1.0.7",
     "@std/media-types": "jsr:@std/media-types@1.1.0",
     "@std/path": "jsr:@std/path@1.1.6",
-    "mermaid": "npm:mermaid@11.17.2",
+    "mermaid": "npm:mermaid@12.0.0",
     "markdown-it-github-alerts": "npm:markdown-it-github-alerts@1.0.1",
     "markdown-it-task-lists": "npm:markdown-it-task-lists@2.1.1",
     "markdown-it-footnote": "npm:markdown-it-footnote@4.0.0",
