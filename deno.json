@@ -11,7 +11,7 @@
   "unstable": ["raw-imports"],
   "imports": {
     "@ansanloms/textlint-rule-preset-ansanloms": "https://cdn.jsdelivr.net/gh/ansanloms/textlint-rule-preset-ansanloms@0.0.2/index.ts",
-    "@marp-team/marp-cli": "npm:@marp-team/marp-cli@4.5.0",
+    "@marp-team/marp-cli": "npm:@marp-team/marp-cli@4.5.1",
     "@shikijs/markdown-it": "npm:@shikijs/markdown-it@4.4.3",
     "@shikijs/transformers": "npm:@shikijs/transformers@4.4.3",
     "@std/encoding": "jsr:@std/encoding@1.0.11",
